@@ -1,6 +1,6 @@
 import pygame.font
 from pygame.sprite import Group
-from ship import Ship
+from ship import Ship,SmallShip
 
 class Scoreboard():
     """显示得分信息的类"""
@@ -26,7 +26,7 @@ class Scoreboard():
         """显示还余下多少艘飞船"""
         self.ships=Group()
         for ship_number in range(self.stats.ships_left):
-            ship=Ship(self.ai_settings,self.screen)
+            ship=SmallShip(self.screen)
             ship.rect.x=10+ship_number*ship.rect.width
             ship.rect.y=10
             self.ships.add(ship)
