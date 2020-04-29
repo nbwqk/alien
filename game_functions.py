@@ -7,6 +7,7 @@ from time import sleep
 def fire_bullet(ai_settings,screen,ship,bullets):
     """如果还没有到达限制，就发射一颗子弹"""
     # 创建新子弹，并将其加入到编组bullets中
+    sheji_sound()
     if (len(bullets)) < ai_settings.bullet_allowed:
         new_bullet = Bullet(ai_settings, screen, ship)
         bullets.add(new_bullet)
@@ -181,6 +182,7 @@ def create_fleet(ai_settings,screen,ship,aliens):
              create_alien(ai_settings,screen,aliens,alien_number,row_number)
 
 def ship_hit(ai_settings, screen, stats, sb, ship, aliens, bullets):
+    ship_hit_sound()
     """响应被外星人撞到的飞船"""
     if stats.ships_left>1:
         # 将ships_left减1
@@ -218,4 +220,11 @@ def check_high_score(stats,sb):
         stats.high_score=stats.score
         sb.prep_high_score()
 
+def sheji_sound():
+    s_sound=pygame.mixer.Sound('sounds/3865.wav')
+    s_sound.play()
+
+def ship_hit_sound():
+    sh_sound=pygame.mixer.Sound('sounds/4617.wav')
+    sh_sound.play()
 
